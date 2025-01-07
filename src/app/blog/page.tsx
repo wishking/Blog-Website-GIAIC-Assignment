@@ -1,36 +1,16 @@
+import BlogCard from '@/components/BlogCard';
 import { blogData } from '@/data/data';
-import Image from 'next/image';
 
-interface BlogDetailPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const blog = blogData.find((blog) => blog.id === params.slug);
-
-  if (!blog) {
-    return (
-      <div>
-        <main className="container mx-auto p-4">
-          <h1 className="text-3xl font-bold mb-4">Blog Not Found</h1>
-          <p className="text-gray-700">The blog you are looking for does not exist.</p>
-        </main>
-      </div>
-    );
-  }
-
+export default function BlogPage() {
   return (
     <div>
       <main className="container mx-auto p-4">
-        <Image
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-64 object-cover mb-4"
-        />
-        <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
-        <p className="text-gray-700">{blog.content}</p>
+        <h1 className="text-3xl font-bold mb-4">All Blogs</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {blogData.map((blog) => (
+            <BlogCard key={blog.id} {...blog} />
+          ))}
+        </div>
       </main>
     </div>
   );

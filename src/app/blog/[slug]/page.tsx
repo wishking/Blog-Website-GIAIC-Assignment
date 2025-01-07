@@ -27,7 +27,9 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
         <Image
           src={blog.image}
           alt={blog.title}
-          className="w-full h-64 object-cover mb-4"
+          height={1080}
+          width={1080}
+          className="w-96 h-96 object-cover mb-4"
         />
         <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
         <p className="text-gray-700">{blog.content}</p>
